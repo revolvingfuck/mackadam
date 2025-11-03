@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.typekit.net/upa2mub.css">
+    <link rel="stylesheet" href="index.css">
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "./assets/three.js-master/build/three.module.min.js"
+        }
+    }
+    </script>
+
+</head>
+<body>
+    <video id="video-background" autoplay loop muted playsinline>
+        <source src="./232408_medium.mp4" type="video/mp4">1
+    </video>
+
+    <img id="image-overlay" src="./Untitled-2.png" alt="Overlay">
+
+    <img class="cloud" id="cloud1" src="./assets/images/cloud.png" alt="Cloud">
+    <img class="cloud" id="cloud2" src="./assets/images/cloud.png" alt="Cloud">
+    <img class="cloud" id="cloud3" src="./assets/images/cloud.png" alt="Cloud">
+
+    <div id="three-container"></div>
+
+    <div id="center-logo">
+        <img src="./assets/logo.png" alt="Logo">
+    </div>
+
+    <!-- Resume Content Container -->
+    <div id="resume-content-container"></div>
+
+    <script type="module" src="index.js"></script>
+</body>
+</html>

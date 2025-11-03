@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+   
+}
+
+#image-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0.5;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+.cloud {
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+    width: 250px;
+    height: auto;
+    filter: blur(3px) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    mix-blend-mode: screen;
+}
+
+@keyframes cloudDrift {
+    0% {
+        transform: translateX(-300px) scale(var(--cloud-scale)) scaleX(var(--cloud-scale-x)) scaleY(var(--cloud-scale-y)) skewX(var(--cloud-skew));
+        opacity: 0;
+    }
+    8% {
+        opacity: 0.5;
+    }
+    92% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(calc(100vw + 300px)) scale(var(--cloud-scale)) scaleX(var(--cloud-scale-x)) scaleY(var(--cloud-scale-y)) skewX(var(--cloud-skew));
+        opacity: 0;
+    }
+}
+
+#three-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#three-container canvas {
+    display: block;
+}
+
+#center-logo {
+    position: absolute;
+    top: 0%;
+    left: calc(2% + 100px);
+    transform: translateY(-33%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+#center-logo img {
+    width: 1050px;
+    height: auto;
+    display: block;
+}
+
+.content {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+    mix-blend-mode: normal;
+}
+
+.main-name {
+    display: block;
+    margin: 0;
+    line-height: 1;
+}
+
+.main-name img {
+    max-width: 500px;
+    height: auto;
+    display: block;
+}
+
+.tagline {
+    font-family: 'Calibri', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 200;
+    color: #ffffff;
+    display: block;
+    margin-top: 0.5rem;
+    line-height: 1;
+    text-align: center;
+}
+
+
+.footer-text {
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    color: #ffffff;
+    margin-top: 2rem;
+}
+
+.header-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+}
+
+/* Resume Content Container */
+#resume-content-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    overflow-y: auto;
+}
+
+#resume-content-container.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Slide off left animation */
+@keyframes slideOffLeft {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-150vw);
+        opacity: 0;
+    }
+}
+
+.sliding-left {
+    animation: slideOffLeft 1s ease-in-out forwards;
+}
+
+/* Slide off right animation */
+@keyframes slideOffRight {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(150vw);
+        opacity: 0;
+    }
+}
+
+.sliding-right {
+    animation: slideOffRight 0.8s ease-in-out forwards;
+}
+
+/* Slide in from left animation */
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-150vw);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.sliding-in-left {
+    animation: slideInFromLeft 1s ease-in-out forwards;
+}
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .main-name {
+        font-size: 3rem;
+        -webkit-text-stroke: 2px #000000;
+    }
+
+    .tagline {
+        font-size: 1.2rem;
+    }
+
+    .header-line {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    /* Logo responsive - center just under top of screen */
+    #center-logo {
+        position: absolute;
+        top: 10%;
+        left: calc(5% - 20px);
+        transform: translateY(-50%);
+        width: 90vw;
+        max-width: 98vw;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        z-index: 2;
+    }
+
+    #center-logo img {
+        width: 150vw; /* 150% of viewport width for responsiveness */
+        max-width: 1800px;
+    }
+}

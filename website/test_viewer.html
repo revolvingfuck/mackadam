@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Viewer</title>
+    <link rel="stylesheet" href="works.css">
+</head>
+<body>
+    <button onclick="testOpen()">Test Open Viewer</button>
+    
+    <div class="content-viewer" id="contentViewer">
+        <div class="viewer-overlay" onclick="closeViewer()"></div>
+        <div class="viewer-container">
+            <div class="viewer-controls">
+                <button class="viewer-close-btn" onclick="closeViewer()">✕</button>
+                <h2 class="viewer-title" id="viewerTitle">Test</h2>
+            </div>
+            <div class="viewer-content">
+                <iframe id="viewerIframe" style="display:none;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function testOpen() {
+            console.log('Test button clicked');
+            const viewer = document.getElementById('contentViewer');
+            const iframe = document.getElementById('viewerIframe');
+            const title = document.getElementById('viewerTitle');
+            
+            title.textContent = 'Test Video';
+            iframe.style.display = 'block';
+            iframe.src = 'https://www.youtube.com/embed/gddRyCO-KXk?autoplay=1';
+            viewer.classList.add('active');
+            console.log('Viewer should be visible now');
+        }
+        
+        function closeViewer() {
+            console.log('Closing');
+            const viewer = document.getElementById('contentViewer');
+            viewer.classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('viewerIframe').src = '';
+            }, 300);
+        }
+    </script>
+</body>
+</html>

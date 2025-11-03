@@ -1,0 +1,12 @@
+[build]
+  publish = "."
+  command = "echo 'Static site - no build needed'"
+
+[[plugins]]
+  package = "netlify-plugin-html-validate"
+
+  [plugins.inputs]
+    # Exclude third-party libraries from validation
+    exclude = [
+      "assets/three.js-master/**/*.html"
+    ]
